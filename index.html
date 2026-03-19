@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NeighbourAid</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>NeighbourAid</h1>
+  <p>Community Guidance Platform</p>
+
+  <h3>Ask a Question</h3>
+
+  <input type="text" id="username" placeholder="Enter Your Name">
+  <br><br>
+
+  <select id="category">
+    <option>Banking Guidance</option>
+    <option>Medical Information</option>
+    <option>Digital Assistance</option>
+    <option>General Guidance</option>
+  </select>
+
+  <br><br>
+
+  <textarea id="question" placeholder="Type your question here"></textarea>
+
+  <br><br>
+
+  <button onclick="postQuestion()">Post Question</button>
+
+  <hr>
+
+  <h3>Filter by Category</h3>
+
+  <select id="filterCategory" onchange="filterQuestions()">
+    <option value="All">All</option>
+    <option>Banking Guidance</option>
+    <option>Medical Information</option>
+    <option>Digital Assistance</option>
+    <option>General Guidance</option>
+  </select>
+
+  <hr>
+
+  <h3>Community Questions</h3>
+  <div id="questionsList"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
