@@ -1,52 +1,96 @@
-body {
-  font-family: 'Segoe UI';
-  margin: 0;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  color: white;
+*{
+box-sizing:border-box;
 }
 
-header {
-  text-align: center;
-  padding: 20px;
+body{
+font-family:Segoe UI;
+margin:0;
+background:#f4f6fb;
 }
 
-.container {
-  width: 90%;
-  margin: auto;
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:#2c3e50;
+color:white;
 }
 
-.card {
-  background: white;
-  color: black;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+.hero{
+text-align:center;
+padding:40px;
+background:linear-gradient(135deg,#6a11cb,#2575fc);
+color:white;
 }
 
-input, textarea, select {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+.card{
+background:white;
+padding:25px;
+margin:20px auto;
+width:90%;
+max-width:600px;
+border-radius:10px;
+box-shadow:0 6px 20px rgba(0,0,0,0.1);
 }
 
-button {
-  padding: 10px;
-  background: #ff7a18;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  width: 100%;
+input,textarea,select{
+width:100%;
+padding:10px;
+margin:10px 0;
+border-radius:6px;
+border:1px solid #ccc;
 }
 
-button:hover {
-  background: #ff3c00;
+button{
+padding:10px;
+background:#3498db;
+border:none;
+color:white;
+border-radius:6px;
+cursor:pointer;
 }
 
-.question-card {
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
+button:hover{
+background:#2980b9;
+}
+
+.question{
+border-bottom:1px solid #ddd;
+padding:10px 0;
+}
+
+#chatButton{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#3498db;
+color:white;
+padding:15px;
+border-radius:50%;
+cursor:pointer;
+font-size:20px;
+}
+
+#chatBox{
+display:none;
+position:fixed;
+bottom:80px;
+right:20px;
+background:white;
+width:260px;
+border-radius:10px;
+padding:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+#chatMessages{
+height:150px;
+overflow:auto;
+font-size:14px;
+}
+
+.dark{
+background:#1e1e1e;
+color:white;
 }
