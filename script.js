@@ -1,107 +1,73 @@
 let questions = JSON.parse(localStorage.getItem("questions")) || [];
+let generatedOTP = "";
 
-function postQuestion() {
-  let username = document.getElementById("username").value;
-  let category = document.getElementById("category").value;
-  let questionText = document.getElementById("question").value;
+// Send OTP
+function sendOTP() {
+  let input = document.getElementById("userInput").value;
 
-  if (username.trim() === "" || questionText.trim() === "") {
-    alert("Please enter your name and question");
-    return;
+  if (!input) return alert("Enter email or phone");
+
+  generatedOTP = Math.floor(1000 + Math.random() * 9000);
+  alert("Demo OTP: " + generatedOTP);
+
+  document.getElementById("otpSection").style.display = "block";
+}
+
+// Verify OTP
+function verifyOTP() {
+  let otp = document.getElementById("otpInput").value;
+
+  if (otp == generatedOTP) {
+    let user = document.getElementById("userInput").value;
+
+    localStorage.setItem("user", user);
+
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("mainApp").style.display = "block";
+    document.getElementById("usernameDisplay").innerText = user;
+  } else {
+    alert("Invalid OTP");
+  }
+}
+
+// Auto login
+window.onload = () => {
+  let user = localStorage.getItem("user");
+
+  if (user) {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("mainApp").style.display = "block";
+    document.getElementById("usernameDisplay").innerText = user;
   }
 
-  questions.push({
-    user: username,
-    category: category,
-    question: questionText,
-    answers: [],
-    status: "Open"
-  });
+  displayQuestions();
+};
+
+// Post question
+function postQuestion() {
+  let name = document.getElementById("username").value;
+  let category = document.getElementById("category").value;
+  let text = document.getElementById("question").value;
+
+  if (!name || !text) return alert("Fill all fields");
+
+  questions.push({ name, category, text });
 
   localStorage.setItem("questions", JSON.stringify(questions));
-
-  document.getElementById("question").value = "";
   displayQuestions();
 }
 
-function displayQuestions(filteredCategory = "All") {
+// Show questions
+function displayQuestions() {
   let list = document.getElementById("questionsList");
   list.innerHTML = "";
 
-  questions.forEach((q, index) => {
-
-    if (filteredCategory !== "All" && q.category !== filteredCategory) {
-      return;
-    }
-
-    let div = document.createElement("div");
-    div.classList.add("question-card");
-
-    let answersHTML = "";
-
-    q.answers.forEach(ans => {
-      answersHTML += `
-        <p class="answer">
-          <strong>${ans.user}</strong>: ${ans.text}
-        </p>
-      `;
-    });
-
-    div.innerHTML = `
-      <p><strong>Asked by:</strong> ${q.user}</p>
-      <p><strong>Category:</strong> ${q.category}</p>
-      <p><strong>Status:</strong> ${q.status}</p>
-      <p>${q.question}</p>
-
-      ${answersHTML}
-
-      <input type="text" id="answerUser-${index}" placeholder="Your Name">
-      <br><br>
-      <textarea id="answerText-${index}" placeholder="Write your answer"></textarea>
-      <br><br>
-
-      <button onclick="addAnswer(${index})">Submit Answer</button>
-      <button onclick="deleteQuestion(${index})" style="background-color:red;">Delete</button>
-      <hr>
+  questions.forEach(q => {
+    list.innerHTML += `
+      <div class="question-card">
+        <b>${q.name}</b> (${q.category})<br>
+        ${q.text}
+      </div>
     `;
-
-    list.appendChild(div);
   });
 }
-
-function addAnswer(index) {
-  let user = document.getElementById(`answerUser-${index}`).value;
-  let text = document.getElementById(`answerText-${index}`).value;
-
-  if (user.trim() === "" || text.trim() === "") {
-    alert("Please enter your name and answer");
-    return;
-  }
-
-  questions[index].answers.push({
-    user: user,
-    text: text
-  });
-
-  questions[index].status = "Answered";
-
-  localStorage.setItem("questions", JSON.stringify(questions));
-  displayQuestions();
-}
-
-function deleteQuestion(index) {
-  let confirmDelete = confirm("Are you sure you want to delete this question?");
-
-  if (confirmDelete) {
-    questions.splice(index, 1);
-    localStorage.setItem("questions", JSON.stringify(questions));
-    displayQuestions();
-  }
-}
-
-function filterQuestions() {
-  let selected = document.getElementById("filterCategory").value;
-  displayQuestions(selected);
-}
-
-displayQuestions();
