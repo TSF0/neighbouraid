@@ -1,58 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>NeighbourAid</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeighbourAid</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
-  <h1>NeighbourAid</h1>
-  <p>Smart Community Guidance Platform</p>
-</header>
+<nav class="navbar">
+  <h2>NeighbourAid</h2>
 
-<div class="container">
-
-  <!-- LOGIN -->
-  <div id="loginBox" class="card">
-    <h2>Login / Register</h2>
-    <input type="text" id="userInput" placeholder="Email or Phone">
-    <button onclick="sendOTP()">Send OTP</button>
-
-    <div id="otpSection" style="display:none;">
-      <input type="text" id="otpInput" placeholder="Enter OTP">
-      <button onclick="verifyOTP()">Verify</button>
-    </div>
+  <div class="nav-right">
+    <button onclick="toggleTheme()">🌙</button>
   </div>
+</nav>
 
-  <!-- APP -->
-  <div id="mainApp" style="display:none;">
 
-    <div class="card">
-      <h3>Welcome, <span id="usernameDisplay"></span></h3>
+<section class="hero">
+  <h1>Community Guidance Platform</h1>
+  <p>Ask questions. Get answers from your community.</p>
+</section>
 
-      <input type="text" id="username" placeholder="Your Name">
 
-      <select id="category">
-        <option>Banking Guidance</option>
-        <option>Medical Information</option>
-        <option>Digital Assistance</option>
-        <option>General Guidance</option>
-      </select>
+<section id="loginSection" class="card">
 
-      <textarea id="question" placeholder="Ask your question"></textarea>
+<h3>Login / Register</h3>
 
-      <button onclick="postQuestion()">Post Question</button>
-    </div>
+<input id="userInput" placeholder="Email or Phone">
 
-    <div class="card">
-      <h3>Community Feed</h3>
-      <div id="questionsList"></div>
-    </div>
+<button onclick="sendOTP()">Send OTP</button>
 
-  </div>
+<div id="otpBox">
+<input id="otpInput" placeholder="Enter OTP">
+<button onclick="verifyOTP()">Verify</button>
+</div>
+
+</section>
+
+
+
+<section id="appSection">
+
+<div class="card">
+
+<h3>Ask a Question</h3>
+
+<input id="username" placeholder="Your Name">
+
+<select id="category">
+<option>Banking Guidance</option>
+<option>Medical Information</option>
+<option>Digital Assistance</option>
+<option>General Guidance</option>
+</select>
+
+<textarea id="question" placeholder="Write your question"></textarea>
+
+<button onclick="postQuestion()">Post Question</button>
 
 </div>
+
+
+
+<div class="card">
+
+<h3>Community Feed</h3>
+
+<input id="searchBox" placeholder="Search questions..." onkeyup="searchQuestions()">
+
+<div id="questionsList"></div>
+
+</div>
+
+</section>
+
+
+
+<div id="chatButton" onclick="toggleChat()">💬</div>
+
+<div id="chatBox">
+<h4>Helper Bot</h4>
+<div id="chatMessages"></div>
+<input id="chatInput" placeholder="Ask something">
+<button onclick="sendChat()">Send</button>
+</div>
+
 
 <script src="script.js"></script>
 </body>
