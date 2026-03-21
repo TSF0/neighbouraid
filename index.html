@@ -6,46 +6,51 @@
 </head>
 <body>
 
-<div class="container">
+<header>
   <h1>NeighbourAid</h1>
-  <p>Community Guidance Platform</p>
+  <p>Smart Community Guidance Platform</p>
+</header>
 
-  <h3>Ask a Question</h3>
+<div class="container">
 
-  <input type="text" id="username" placeholder="Enter Your Name">
-  <br><br>
+  <!-- LOGIN -->
+  <div id="loginBox" class="card">
+    <h2>Login / Register</h2>
+    <input type="text" id="userInput" placeholder="Email or Phone">
+    <button onclick="sendOTP()">Send OTP</button>
 
-  <select id="category">
-    <option>Banking Guidance</option>
-    <option>Medical Information</option>
-    <option>Digital Assistance</option>
-    <option>General Guidance</option>
-  </select>
+    <div id="otpSection" style="display:none;">
+      <input type="text" id="otpInput" placeholder="Enter OTP">
+      <button onclick="verifyOTP()">Verify</button>
+    </div>
+  </div>
 
-  <br><br>
+  <!-- APP -->
+  <div id="mainApp" style="display:none;">
 
-  <textarea id="question" placeholder="Type your question here"></textarea>
+    <div class="card">
+      <h3>Welcome, <span id="usernameDisplay"></span></h3>
 
-  <br><br>
+      <input type="text" id="username" placeholder="Your Name">
 
-  <button onclick="postQuestion()">Post Question</button>
+      <select id="category">
+        <option>Banking Guidance</option>
+        <option>Medical Information</option>
+        <option>Digital Assistance</option>
+        <option>General Guidance</option>
+      </select>
 
-  <hr>
+      <textarea id="question" placeholder="Ask your question"></textarea>
 
-  <h3>Filter by Category</h3>
+      <button onclick="postQuestion()">Post Question</button>
+    </div>
 
-  <select id="filterCategory" onchange="filterQuestions()">
-    <option value="All">All</option>
-    <option>Banking Guidance</option>
-    <option>Medical Information</option>
-    <option>Digital Assistance</option>
-    <option>General Guidance</option>
-  </select>
+    <div class="card">
+      <h3>Community Feed</h3>
+      <div id="questionsList"></div>
+    </div>
 
-  <hr>
-
-  <h3>Community Questions</h3>
-  <div id="questionsList"></div>
+  </div>
 
 </div>
 
