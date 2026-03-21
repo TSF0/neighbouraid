@@ -1,73 +1,147 @@
 let questions = JSON.parse(localStorage.getItem("questions")) || [];
-let generatedOTP = "";
+let otp="";
 
-// Send OTP
-function sendOTP() {
-  let input = document.getElementById("userInput").value;
+function sendOTP(){
 
-  if (!input) return alert("Enter email or phone");
+let user=document.getElementById("userInput").value;
 
-  generatedOTP = Math.floor(1000 + Math.random() * 9000);
-  alert("Demo OTP: " + generatedOTP);
+if(!user)return alert("Enter email or phone");
 
-  document.getElementById("otpSection").style.display = "block";
+otp=Math.floor(1000+Math.random()*9000);
+
+alert("Demo OTP: "+otp);
+
+document.getElementById("otpBox").style.display="block";
+
 }
 
-// Verify OTP
-function verifyOTP() {
-  let otp = document.getElementById("otpInput").value;
+function verifyOTP(){
 
-  if (otp == generatedOTP) {
-    let user = document.getElementById("userInput").value;
+let entered=document.getElementById("otpInput").value;
 
-    localStorage.setItem("user", user);
+if(entered==otp){
 
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("mainApp").style.display = "block";
-    document.getElementById("usernameDisplay").innerText = user;
-  } else {
-    alert("Invalid OTP");
-  }
+localStorage.setItem("user",document.getElementById("userInput").value);
+
+document.getElementById("loginSection").style.display="none";
+document.getElementById("appSection").style.display="block";
+
+}else{
+alert("Wrong OTP");
 }
 
-// Auto login
-window.onload = () => {
-  let user = localStorage.getItem("user");
-
-  if (user) {
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("mainApp").style.display = "block";
-    document.getElementById("usernameDisplay").innerText = user;
-  }
-
-  displayQuestions();
-};
-
-// Post question
-function postQuestion() {
-  let name = document.getElementById("username").value;
-  let category = document.getElementById("category").value;
-  let text = document.getElementById("question").value;
-
-  if (!name || !text) return alert("Fill all fields");
-
-  questions.push({ name, category, text });
-
-  localStorage.setItem("questions", JSON.stringify(questions));
-  displayQuestions();
 }
 
-// Show questions
-function displayQuestions() {
-  let list = document.getElementById("questionsList");
-  list.innerHTML = "";
 
-  questions.forEach(q => {
-    list.innerHTML += `
-      <div class="question-card">
-        <b>${q.name}</b> (${q.category})<br>
-        ${q.text}
-      </div>
-    `;
-  });
+
+function postQuestion(){
+
+let name=document.getElementById("username").value;
+let cat=document.getElementById("category").value;
+let text=document.getElementById("question").value;
+
+if(!name||!text)return alert("Fill fields");
+
+questions.push({name,cat,text});
+
+localStorage.setItem("questions",JSON.stringify(questions));
+
+displayQuestions();
+
+}
+
+
+
+function displayQuestions(){
+
+let list=document.getElementById("questionsList");
+
+list.innerHTML="";
+
+questions.forEach(q=>{
+
+list.innerHTML+=`
+
+<div class="question">
+
+<b>${q.name}</b> • ${q.cat}
+
+<p>${q.text}</p>
+
+</div>
+
+`;
+
+});
+
+}
+
+displayQuestions();
+
+
+
+function searchQuestions(){
+
+let value=document.getElementById("searchBox").value.toLowerCase();
+
+let list=document.getElementById("questionsList");
+
+list.innerHTML="";
+
+questions.forEach(q=>{
+
+if(q.text.toLowerCase().includes(value)){
+
+list.innerHTML+=`
+
+<div class="question">
+
+<b>${q.name}</b> • ${q.cat}
+
+<p>${q.text}</p>
+
+</div>
+
+`;
+
+}
+
+});
+
+}
+
+
+
+function toggleChat(){
+
+let box=document.getElementById("chatBox");
+
+box.style.display=box.style.display=="block"?"none":"block";
+
+}
+
+
+
+function sendChat(){
+
+let input=document.getElementById("chatInput");
+
+let msg=input.value;
+
+let chat=document.getElementById("chatMessages");
+
+chat.innerHTML+=`<p><b>You:</b> ${msg}</p>`;
+
+chat.innerHTML+=`<p><b>Bot:</b> Please ask your question in the platform.</p>`;
+
+input.value="";
+
+}
+
+
+
+function toggleTheme(){
+
+document.body.classList.toggle("dark");
+
 }
