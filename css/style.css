@@ -1,0 +1,57 @@
+body{
+
+font-family:Segoe UI;
+
+margin:0;
+
+background:#f5f7fb;
+
+}
+
+nav{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:15px 40px;
+
+background:white;
+
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+
+}
+
+.logo{
+
+height:50px;
+
+}
+
+.hero{
+
+text-align:center;
+
+padding:100px;
+
+background:linear-gradient(135deg,#5a9bd4,#7bdff2);
+
+color:white;
+
+}
+
+.btn{
+
+background:#ff8c42;
+
+padding:12px 20px;
+
+border-radius:6px;
+
+color:white;
+
+text-decoration:none;
+
+}
