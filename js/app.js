@@ -1,6 +1,6 @@
 function postQuestion(){
 
-let q=document.getElementById("question").value;
+let q=document.getElementById("question").value
 
 db.collection("questions").add({
 
@@ -8,7 +8,7 @@ text:q,
 
 time:Date.now()
 
-});
+})
 
 }
 
@@ -18,16 +18,16 @@ db.collection("questions")
 
 .onSnapshot(snapshot=>{
 
-let html="";
+let html=""
 
 snapshot.forEach(doc=>{
 
-let data=doc.data();
+let data=doc.data()
 
-html+=`<p>${data.text}</p>`;
+html+=`<div class="question">${data.text}</div>`
 
-});
+})
 
-document.getElementById("questions").innerHTML=html;
+document.getElementById("questions").innerHTML=html
 
-});
+})
