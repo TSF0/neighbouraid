@@ -1,94 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NeighbourAid</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
 
-<nav class="navbar">
-  <h2>NeighbourAid</h2>
+<nav>
 
-  <div class="nav-right">
-    <button onclick="toggleTheme()">🌙</button>
-  </div>
+<img src="images/logo.png" class="logo">
+
+<a href="login.html">Login</a>
+
 </nav>
 
 
-<section class="hero">
-  <h1>Community Guidance Platform</h1>
-  <p>Ask questions. Get answers from your community.</p>
-</section>
+<header class="hero">
 
+<h1>NeighbourAid</h1>
 
-<section id="loginSection" class="card">
+<p>Community guidance platform helping people solve everyday problems.</p>
 
-<h3>Login / Register</h3>
+<a href="login.html" class="btn">Start Asking Questions</a>
 
-<input id="userInput" placeholder="Email or Phone">
+</header>
 
-<button onclick="sendOTP()">Send OTP</button>
-
-<div id="otpBox">
-<input id="otpInput" placeholder="Enter OTP">
-<button onclick="verifyOTP()">Verify</button>
-</div>
-
-</section>
-
-
-
-<section id="appSection">
-
-<div class="card">
-
-<h3>Ask a Question</h3>
-
-<input id="username" placeholder="Your Name">
-
-<select id="category">
-<option>Banking Guidance</option>
-<option>Medical Information</option>
-<option>Digital Assistance</option>
-<option>General Guidance</option>
-</select>
-
-<textarea id="question" placeholder="Write your question"></textarea>
-
-<button onclick="postQuestion()">Post Question</button>
-
-</div>
-
-
-
-<div class="card">
-
-<h3>Community Feed</h3>
-
-<input id="searchBox" placeholder="Search questions..." onkeyup="searchQuestions()">
-
-<div id="questionsList"></div>
-
-</div>
-
-</section>
-
-
-
-<div id="chatButton" onclick="toggleChat()">💬</div>
-
-<div id="chatBox">
-<h4>Helper Bot</h4>
-<div id="chatMessages"></div>
-<input id="chatInput" placeholder="Ask something">
-<button onclick="sendChat()">Send</button>
-</div>
-
-
-<script src="script.js"></script>
 </body>
 </html>
