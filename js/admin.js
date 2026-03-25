@@ -1,4 +1,4 @@
-const list=document.getElementById("questions");
+const list=document.getElementById("questions")
 
 db.collection("questions")
 
@@ -6,11 +6,11 @@ db.collection("questions")
 
 .onSnapshot(snapshot=>{
 
-let html="";
+let html=""
 
 snapshot.forEach(doc=>{
 
-let data=doc.data();
+let data=doc.data()
 
 html+=`
 
@@ -26,17 +26,16 @@ Delete
 
 </div>
 
-`;
+`
 
-});
+})
 
-list.innerHTML=html;
+list.innerHTML=html
 
-});
-
+})
 
 function deleteQuestion(id){
 
-db.collection("questions").doc(id).delete();
+db.collection("questions").doc(id).delete()
 
 }
