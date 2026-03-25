@@ -10,22 +10,47 @@
 
 <body>
 
-<nav>
+<div class="admin-container">
 
-<h2>Admin Dashboard</h2>
+<div class="sidebar">
 
-<a href="index.html">Back to Site</a>
+<h2>NeighbourAid</h2>
 
-</nav>
+<a href="admin.html">Dashboard</a>
+<a href="#">Users</a>
+<a href="#">Questions</a>
+<a href="index.html">Logout</a>
+
+</div>
 
 
-<h3>All Questions</h3>
+<div class="main">
 
-<div id="questions"></div>
+<h1>Admin Dashboard</h1>
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Questions</h3>
+<p id="totalQuestions">0</p>
+</div>
+
+<div class="card">
+<h3>Total Users</h3>
+<p id="totalUsers">0</p>
+</div>
+
+</div>
 
 
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+<h2>Community Questions</h2>
+
+<div id="questions" class="question-list"></div>
+
+</div>
+
+</div>
+
 
 <script src="js/firebase.js"></script>
 <script src="js/admin.js"></script>
