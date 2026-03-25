@@ -14,15 +14,17 @@
 
 <img src="images/logo.png" class="logo">
 
-<a href="login.html">Login</a>
+<div>
 
+<a href="login.html">Login</a>
 <a href="admin-login.html">Admin</a>
+
+</div>
 
 </nav>
 
-<header class="hero">
 
-<img src="images/logo.png" width="120">
+<header class="hero">
 
 <h1>NeighbourAid</h1>
 
@@ -31,6 +33,23 @@
 <a href="login.html" class="btn">Get Started</a>
 
 </header>
+
+
+<div class="chatbot">
+
+<button onclick="toggleChat()">💬</button>
+
+<div id="chatBox">
+
+<input id="chatInput" placeholder="Ask something">
+
+<button onclick="sendChat()">Send</button>
+
+</div>
+
+</div>
+
+<script src="js/chatbot.js"></script>
 
 </body>
 </html>
